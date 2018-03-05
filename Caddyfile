@@ -1,4 +1,4 @@
-:$PORT{
+:$PORT {
       gzip
       root .
       websocket /redis "redis-cli"
