@@ -1,0 +1,26 @@
+{
+  "name": "redisjs",
+  "version": "1.0.0",
+  "main": "redisjs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arahmanhamdy/redisjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arahmanhamdy/redisjs/issues"
+  },
+  "homepage": "https://github.com/arahmanhamdy/redisjs#readme",
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0"
+  },
+  "dependencies": {
+  },
+  "description": "Redis websocket client to be used from frontend applications with caddy application server as a websocket reverse proxy"
+}
