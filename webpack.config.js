@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/redisjs.js',
+  entry: './index.js',
   mode: 'production',
   output: {
     filename: 'redisjs.min.js',

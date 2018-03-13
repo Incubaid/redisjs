@@ -25,7 +25,8 @@
     "webpack-cli": "^2.0.10"
   },
   "dependencies": {
-    "redis-parser": "^3.0.0"
+    "redis-parser": "^3.0.0",
+    "redis-proto": "^2.1.0"
   },
   "description": "Redis websocket client to be used from frontend applications with caddy application server as a websocket reverse proxy"
 }

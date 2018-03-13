@@ -1,6 +1,22 @@
 const Parser = require('redis-parser');
 const { Buffer } = require('buffer/');
 
+function encode(...args) {
+  let cmd = '';
+  for (let i = 0; i < args.length; i += 1) {
+    const arg = args[i];
+    if (typeof arg === 'string' || arg instanceof String) {
+      cmd += `$${arg.length}\r\n${arg}\r\n`;
+    } else if (typeof arg === 'number' || Number.isFinite(arg)) {
+      cmd += `:${arg}\r\n`;
+    } else {
+      const stringifiedArg = JSON.stringify(arg);
+      cmd += `$${stringifiedArg.length}\r\n${stringifiedArg}\r\n`;
+    }
+  }
+  return `*${args.length}\r\n${cmd}`;
+}
+
 class RedisConnection {
   constructor(serverURL) {
     const self = this;
@@ -65,12 +81,7 @@ class RedisConnection {
     return (...args) => {
       const callbackFunctions = args.filter(arg => typeof arg === 'function');
       const redisCmdArgs = args.filter(arg => typeof arg !== 'function');
-      let cmd;
-      if (redisCmdArgs) {
-        cmd = `${methodName} ${redisCmdArgs.join(' ')}\r\n`;
-      } else {
-        cmd = `${methodName}\r\n`;
-      }
+      const cmd = encode(methodName, ...redisCmdArgs);
       this.send(cmd, ...callbackFunctions);
     };
   }

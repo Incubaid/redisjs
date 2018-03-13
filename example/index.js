@@ -2,19 +2,19 @@ const SERVER_DOMAIN = 'localhost:8200';
 const redisConnection = new RedisConnection(`${SERVER_DOMAIN}`);
 
 const successCallback = (conn) => {
-  conn.set('age', 50, (res) => {
+  conn.set('myNumbers', [1, 2, 3], (res) => {
     console.log(res);
   }, (err) => {
     console.log(`Error: ${err.message}`);
   });
 
-  conn.get('age', (res) => {
+  conn.get('myNumbers', (res) => {
     console.log(res);
   }, (err) => {
     console.log(`Error: ${err.message}`);
   });
 
-  conn.INVALID_CMD('age', (res) => {
+  conn.INVALID_CMD('myNumbers', (res) => {
     console.log(res);
   }, (err) => {
     console.log(`Error: ${err.message}`);
