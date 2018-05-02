@@ -1,13 +1,13 @@
 # Redisjs Library
 
-`redisjs` library is a redis client for javascript client side. It uses websocket with a bridge server to proxy the websocket connections to tcp socket connections (i.e [caddy wsproxy](https://github.com/arahmanhamdy/wsproxy))
+`redisjs` library is a redis client for javascript client side. It uses websocket with a bridge server to proxy the websocket connections to tcp socket connections (i.e [caddy wsproxy](https://github.com/incubaid/wsproxy))
 
 
 ## Installation
 
 #### using npm:
 ```bash
-npm install https://github.com/arahmanhamdy/redisjs
+npm install https://github.com/incubaid/redisjs
 ```
 
 Then you can import RedisConnection into your js files:
@@ -37,6 +37,22 @@ const errCallback = (err) => {
 };
 
 redisConnection.connect(successCallback, errCallback);
+```
+
+* Run [gedis](https://github.com/rivine/recordchain//blob/master/JumpScale9RecordChain/servers/gedis/README.md) commands using methods similar to [redis-commands](https://redis.io/commands) names and arguments. It follows the format of '{namespace}:{command}'.
+
+```javascript
+conn['system.set']('myNumbers', [1, 2, 3], (res) => {
+    console.log(res);
+  }, (err) => {
+    console.log(`Error: ${err.message}`);
+  });
+
+conn['system.set']('myNumbers', (res) => {
+    console.log(res);
+  }, (err) => {
+    console.log(`Error: ${err.message}`);
+  });
 ```
 
 * Run redis commands using methods with the same [redis-commands](https://redis.io/commands) names and arguments
